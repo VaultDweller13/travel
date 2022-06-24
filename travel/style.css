@@ -347,3 +347,82 @@ template {
 [hidden] {
   display: none;
 }
+
+/* Stylesheet start*/
+
+/* red-hat-text-500 - latin */
+@font-face {
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 500;
+  src: local(''),
+       url('./fonts/red-hat-text-v11-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('./fonts/red-hat-text-v11-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+body {
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.wrapper {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+/* Header */
+
+.header {
+  height: 90px;
+  background-color: rgba(242, 120, 92, 0.7);
+  box-shadow: 0px 4px 4px rgba(13, 96, 111, 0.5);
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  
+}
+
+.header__list {
+  display: flex;
+  gap: 42px;
+  margin: 0;
+  list-style: none;
+}
+
+.header__link,
+.header__link:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header__link:hover, 
+.header__link:focus, 
+.header__link:active {
+  opacity: 0.75;
+}
+
+.header__login-button {
+  width: 103px;
+  padding: 10px 0;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(13, 96, 111, 0.16);
+  background-color: #0D606F;
+
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+  
+}
+
+/* Main */
