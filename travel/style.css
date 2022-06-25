@@ -570,3 +570,88 @@ body {
   display: block;
   margin: 0 auto 30px;
 }
+
+
+/* Section Destinations*/
+
+.section-destinations {
+  margin-bottom: 80px;
+}
+
+.section-destinations__heading {
+  margin-bottom: 46px;
+}
+
+.section-destinations__slider {
+  display: flex;
+  justify-content: center;
+  width: 1440px;
+  gap: 60px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.section-destinations__figure {
+  position: relative;
+  margin: 0;
+}
+
+.section-destinations__image {
+  border-radius: 16px;
+}
+
+.section-destinations__caption {
+  position: absolute;
+  left: 15px;
+  bottom: 40px;
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 42px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.slider-dots__dot {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(242, 120, 92, 0.5);
+  border-radius: 50%; 
+}
+
+.slider-dots__dot-active {
+  background-color: #f2785c;
+}
+
+.section-destinations__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 32px;
+  margin: 0 auto;
+  background: #0D606F;
+  box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+  border-radius: 10px;
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #FFFFFF;
+}
+
+.section-destinations__button::before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  background: url(./images/svg/arrow-right-icon.svg) no-repeat;
+}
