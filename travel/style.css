@@ -701,6 +701,10 @@ body {
   color: #0D606F;
 }
 
+.stories-card__text {
+  margin: 0;
+}
+
 .stories-card__link {
   font-weight: 700;
   color: inherit;
@@ -724,7 +728,6 @@ body {
   line-height: 21px;
 
   color: #FFFFFF;
-  background: none;
 }
 
 .footer__copyright {
@@ -732,12 +735,18 @@ body {
   padding-left: 590px;
 }
 
-.footer__social {
+.social {
   display: flex;
   gap: 20px;
+  margin: 0;
+  padding: 0;
 }
 
-.footer__link {
+.social__item {
+  list-style: none;
+}
+
+.social__item {
   width: 34px;
   height: 34px;
 }
