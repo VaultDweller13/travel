@@ -472,14 +472,14 @@ body {
   content: "";
   width: 40px;
   height: 40px;
-  background: url(./images/svg/arrow-right-icon.svg) no-repeat;
+  background: url(./assets/images/svg/arrow-right-icon.svg) no-repeat;
 }
 
 
 /* Section Preview */
 
 .section-preview {
-  background: url(./images/bg-top.jpg) no-repeat;
+  background: url(./assets/images/bg-top.jpg) no-repeat;
   padding-top: 122px;
   padding-bottom: 221px;
   margin-bottom: 80px;
@@ -668,7 +668,7 @@ body {
 
 .stories-cards {
   padding-bottom: 62px;
-  background: url(./images/bg-bottom.jpg) no-repeat;
+  background: url(./assets/images/bg-bottom.jpg) no-repeat;
   background-blend-mode: color;
 }
 
