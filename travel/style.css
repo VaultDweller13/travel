@@ -350,6 +350,10 @@ template {
 
 /* Stylesheet start*/
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   position: relative;
   width: 1440px;
@@ -365,6 +369,13 @@ body {
   max-width: 1200px;
   height: 100%;
   margin: 0 auto;
+}
+
+button:hover,
+button:focus  {
+  cursor: pointer;
+  background-color: #094f5c;
+  transition: 0.3s;
 }
 
 /* Header */
@@ -428,9 +439,9 @@ body {
   color: #ffffff;
 }
 
-.header__login-button:hover,
-.header__login-button:focus {
-  background-color: #094f5c;
+.header__login-button:active {
+  transform: translateY(-3px);
+  transition: 0.3s ease-out;
 }
 
 /* Main */
@@ -718,6 +729,11 @@ body {
   color: inherit;
 }
 
+.stories-card__link:hover,
+.stories-card__link:active {
+  text-decoration: none;
+}
+
 /* Footer */
 
 .footer {
@@ -752,9 +768,13 @@ body {
 
 .social__item {
   list-style: none;
-}
-
-.social__item {
   width: 34px;
   height: 34px;
 }
+
+.social__item:hover,
+.social__item:focus {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
