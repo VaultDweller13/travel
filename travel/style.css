@@ -356,8 +356,9 @@ html {
 
 body {
   position: relative;
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
+
   font-family: 'Red Hat Text';
   font-style: normal;
   font-weight: 500;
@@ -367,6 +368,7 @@ body {
 
 .wrapper {
   max-width: 1200px;
+  padding: 0 10px;
   height: 100%;
   margin: 0 auto;
 }
@@ -383,7 +385,7 @@ button:focus  {
 .header {
   position: absolute;
   top: 0;
-  width: 1440px;
+  width: 100%;
   padding: 25px 0 24px;
   background-color: rgba(242, 120, 92, 0.7);
   box-shadow: 0px 4px 4px rgba(13, 96, 111, 0.5);
@@ -391,6 +393,7 @@ button:focus  {
 
 .header__wrapper {
   display: flex;
+  flex-wrap: wrap;
   height: 100%;
 }
 
@@ -401,6 +404,7 @@ button:focus  {
 
 .header__list {
   display: flex;
+  flex-wrap: wrap;
   gap: 42px;
   margin: 0 198px 0 0;
   padding: 10px 0;
@@ -424,8 +428,8 @@ button:focus  {
 }
 
 .header__login-button {
-  width: 103px;
-  padding: 10px 0;
+  max-width: 103px;
+  padding: 10px 30px;
   border: none;
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(13, 96, 111, 0.16);
@@ -447,6 +451,7 @@ button:focus  {
 /* Main */
 
 .section-heading {
+  padding: 0 10px;
   text-align: center;
   font-family: 'Red Hat Text';
   font-style: normal;
@@ -458,13 +463,13 @@ button:focus  {
 
 .section__button-forward {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 10px;
   padding: 10px 32px;
   margin: 0 auto;
-  width: 228px;
-  /* height: 59px; */
+  max-width: 228px;
   transform: translate(1px);
 
   background: #0D606F;
@@ -497,9 +502,9 @@ button:focus  {
 }
 
 .preview-content {
-  width: 892px;
-  margin-left: 120px;
-  padding-bottom: 33px;
+  max-width: 892px;
+  margin-left: 110px;
+  padding: 0 10px 33px;
 }
 
 .section-preview__heading {
@@ -525,6 +530,7 @@ button:focus  {
 .search-form {
   height: 95px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   background: rgba(255, 255, 255, 0.7);
@@ -532,7 +538,8 @@ button:focus  {
 }
 
 .search-form__search-input {
-  width: 560px;
+  max-width: 560px;
+  flex: 1 0 auto;
   margin-left: 41px;
   background-color: transparent;
   border: none;
@@ -550,9 +557,9 @@ button:focus  {
 }
 
 .search-form__search-button {
-  width: 228px;
-  height: 59px;
+  max-width: 228px;
   margin-right: 18px;
+  padding: 14px 33px;
   background: #0D606F;
   box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
   border: none;
@@ -574,7 +581,7 @@ button:focus  {
 }
 
 .steps-content {
-  width: 1177px;
+  max-width: 1177px;
   margin: 0 auto;
 }
 
@@ -584,6 +591,7 @@ button:focus  {
 
 .steps-cards {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .section-steps__card {
@@ -624,8 +632,9 @@ button:focus  {
 
 .section-destinations__slider {
   display: flex;
+  /* flex-wrap: wrap; */
   justify-content: center;
-  width: 1440px;
+  max-width: 1440px;
   gap: 60px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -655,6 +664,7 @@ button:focus  {
 
 .slider-dots {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
   margin-bottom: 40px;
@@ -690,6 +700,7 @@ button:focus  {
 
 .stories-card {
   display: flex;
+  flex-wrap: wrap;
   gap: 40px;
   margin-bottom: 30px;
 }
@@ -712,6 +723,7 @@ button:focus  {
 }
 
 .stories-card__description {
+  max-width: 760px;
   font-family: 'Aleo';
   font-style: normal;
   font-weight: 400;
@@ -741,6 +753,7 @@ button:focus  {
   bottom: 0;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 328px;
   padding: 14px 0;
@@ -761,6 +774,7 @@ button:focus  {
 
 .social {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   margin: 0;
   padding: 0;
