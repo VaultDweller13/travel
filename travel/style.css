@@ -354,25 +354,147 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Mobile */
+figure {
+  margin: 0;
+}
 
+/* Mobile */
+body {
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.wrapper {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+button:hover,
+  button:focus  {
+    cursor: pointer;
+    background-color: #094f5c;
+    transition: 0.3s;
+  }
+
+/* Header */
+
+/* Main */
+
+/* Section Preview */
+
+.section__button-forward {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 7.5px 12px;
+  margin: 0 auto;
+  max-width: 92px;
+  transform: translate(1px);
+
+  background: #0D606F;
+  box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+  border: none;
+  border-radius: 10px;
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 15px;
+  color: #FFFFFF;
+}
+
+.section__button-forward::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: url(./assets/images/svg/arrow-right-icon.svg) no-repeat;
+  background-size: contain;
+}
+
+
+.section-preview {
+  background: url(./assets/images/bg-top-m.jpg) no-repeat;
+}
+
+/* Section Steps */
+
+/* Section Destinations */
+.section-destinations__slider {
+  max-width: 360px;
+  margin: 0 auto;
+  display: flex;
+  overflow: hidden;
+}
+
+.section-destinations__image {
+  border-radius: 16px;
+}
+/* Section stories */
+.stories-cards {
+
+  background: url(./assets/images/bg-bottom-m.jpg) no-repeat;
+
+  font-family: 'Aleo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 11px;
+
+  color: #0D606F;
+}
+
+.stories-bg {
+  padding: 10px 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.stories-card {
+  /* max-height: 130px; */
+  display: flex;
+  gap: 10px;
+
+  margin-bottom: 15px;
+}
+
+.stories-card:last-child {
+  margin-bottom: 10px;
+}
+
+.stories-card__image {
+  filter: drop-shadow(0px 4px 4px #0D606F);
+  border-radius: 16px;
+}
+
+.stories-card__heading {
+  margin: 5px 0 10px;
+}
+
+.stories-card__text {
+  display: none;
+}
+
+.stories-card__text-m {
+  margin: 0;
+}
+
+
+/* Footer */
 
 /* Media queries */
 
 /* 1440px */
 
-@media screen and (min-width: 390px) {
+@media screen and (min-width: 391px) {
 
   body {
     position: relative;
     max-width: 1440px;
     margin: 0 auto;
-
-    font-family: 'Red Hat Text';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    color: #ffffff;
   }
 
   .wrapper {
@@ -743,7 +865,12 @@ html {
   }
 
   .stories-card__text {
+    display: block;
     margin: 0;
+  }
+
+  .stories-card__text-m {
+    display: none;
   }
 
   .stories-card__link {
