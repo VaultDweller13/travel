@@ -468,16 +468,83 @@ button:hover,
 }
 
 /* Section Destinations */
+
+.section-destinations {
+  position: relative;
+  margin-bottom: 20px;
+}
+
 .section-destinations__slider {
   max-width: 360px;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   display: flex;
   overflow: hidden;
 }
 
+.section-destinations__figure {
+  position: relative;
+}
+
+.section-destinations__figure:before {
+content: "";
+width: 30px;
+height: 30px;
+position: absolute;
+top: 90px;
+left: 5px;
+background: url(./assets/images/svg/arrow-left.svg);
+}
+
+.section-destinations__figure:after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 90px;
+  right: 5px;
+  background: url(./assets/images/svg/arrow-right-bold.svg);
+  }
+
 .section-destinations__image {
+  display: block;
   border-radius: 16px;
 }
+
+.section-destinations__caption {
+  position: absolute;
+  left: 15px;
+  top: 8px;
+
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 52px;
+  left: 177px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.slider-dots__dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(242, 120, 92, 0.5);
+  border-radius: 50%; 
+}
+
+.slider-dots__dot-active {
+  background-color: #f2785c;
+}
+
 /* Section stories */
 .stories-cards {
   padding-bottom: 65px;
