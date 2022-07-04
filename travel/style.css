@@ -432,6 +432,41 @@ button:hover,
 
 /* Section Steps */
 
+.steps-content {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.steps-cards {
+  display: grid;
+  grid-template-columns: 94px 111px 98px;
+  justify-content: space-between;
+}
+
+.section-steps__card:nth-child(2) {
+  text-align: center;
+}
+
+.section-steps__card:last-child {
+  text-align: right;
+}
+
+.section-steps__icon {
+  margin: 0 auto;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 20px;
+}
+
+.section-steps__card-caption {
+  font-family: 'Aleo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #0D606F;
+}
+
 /* Section Destinations */
 .section-destinations__slider {
   max-width: 360px;
