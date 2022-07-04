@@ -381,6 +381,31 @@ button:hover,
 
 /* Header */
 
+.header {
+  position: relative;
+  margin-bottom: -75px;
+  padding: 45px 0 0;
+
+  background: linear-gradient(180deg, #0D606F 0%, rgba(13, 96, 111, 0) 63px);
+  background-blend-mode: color;
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo-link span {
+  display: none;
+}
+
+.header__nav {
+  display: none;
+}
+
+.header__login-button {
+  display: none;
+}
 /* Main */
 
 .section-heading {
@@ -392,7 +417,6 @@ button:hover,
   line-height: 19px;
   color: #F2785C;
 }
-/* Section Preview */
 
 .section__button-forward {
   display: flex;
@@ -425,9 +449,69 @@ button:hover,
   background-size: contain;
 }
 
+/* Section Preview */
 
 .section-preview {
   background: url(./assets/images/bg-top-m.jpg) no-repeat;
+}
+
+.preview-content {
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 142px 0 61px;
+
+}
+
+.section-preview__heading {
+  display: none;
+}
+
+.section-preview__text {
+  display: none;
+}
+
+.search-form {
+  padding: 9px 9px 9px 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+}
+
+.search-form__search-input {
+  width: 226px;
+  flex: 1 0 auto;
+  padding: 0;
+  margin-right: 12px;
+  background-color: transparent;
+  border: none;
+}
+
+.search-form__search-input::placeholder {
+  font-family: 'Aleo';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #F2785C;
+  opacity: 1;
+}
+
+.search-form__search-button {
+  max-width: 92px;
+  margin: 0;
+  padding: 8px 9px;
+  background: #0D606F;
+  box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+  border: none;
+  border-radius: 10px;
+
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 15px;
+
+  color: #FFFFFF;
 }
 
 /* Section Steps */
@@ -680,9 +764,29 @@ background: url(./assets/images/svg/arrow-left.svg);
     height: 100%;
   }
 
+  .header__logo {
+    margin-right: 6px;
+  }
+
+  .header__logo-link span {
+    display: inline;
+  }
+
   .header__logo-link {
     height: 32px;
     margin-right: 158px;
+    font-family: 'Magra';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+
+  .header__nav {
+    display: block;
   }
 
   .header__list {
@@ -711,6 +815,7 @@ background: url(./assets/images/svg/arrow-left.svg);
   }
 
   .header__login-button {
+    display: block;
     max-width: 103px;
     padding: 10px 30px;
     border: none;
@@ -724,6 +829,10 @@ background: url(./assets/images/svg/arrow-left.svg);
     font-size: 16px;
     line-height: 21px;
     color: #ffffff;
+  }
+
+  .header-menu {
+    display: none;
   }
 
   .header__login-button:active {
@@ -791,6 +900,7 @@ background: url(./assets/images/svg/arrow-left.svg);
   }
 
   .section-preview__heading {
+    display: block;
     margin: 0 0 32px 0;
     font-family: 'Aleo';
     font-style: normal;
@@ -801,6 +911,7 @@ background: url(./assets/images/svg/arrow-left.svg);
   }
 
   .section-preview__text {
+    display: block;
     margin-bottom: 46px;
     font-family: 'Aleo';
     font-style: italic;
