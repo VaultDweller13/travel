@@ -383,8 +383,8 @@ button:hover,
 
 .header {
   position: relative;
-  margin-bottom: -75px;
-  padding: 45px 0 0;
+  margin-bottom: -79px;
+  padding: 43px 0 0;
 
   background: linear-gradient(180deg, #0D606F 0%, rgba(13, 96, 111, 0) 63px);
   background-blend-mode: color;
@@ -393,6 +393,10 @@ button:hover,
 .header__wrapper {
   display: flex;
   justify-content: space-between;
+}
+
+.header__logo {
+  margin: 2px 0 0 1px;
 }
 
 .header__logo-link span {
@@ -406,9 +410,16 @@ button:hover,
 .header__login-button {
   display: none;
 }
+
+.header-menu {
+  transform: translate(-5px);
+}
+
 /* Main */
 
 .section-heading {
+  margin-bottom: 20px;
+
   text-align: center;
   font-family: 'Red Hat Text';
   font-style: normal;
@@ -452,6 +463,7 @@ button:hover,
 /* Section Preview */
 
 .section-preview {
+  margin-bottom: 20px;
   background: url(./assets/images/bg-top-m.jpg) no-repeat;
 }
 
@@ -471,7 +483,7 @@ button:hover,
 }
 
 .search-form {
-  padding: 9px 9px 9px 16px;
+  padding: 9px 9px 8px 16px;
   background: rgba(255, 255, 255, 0.7);
   border-radius: 16px;
 }
@@ -480,7 +492,7 @@ button:hover,
   width: 226px;
   flex: 1 0 auto;
   padding: 0;
-  margin-right: 12px;
+  margin-right: 13px;
   background-color: transparent;
   border: none;
 }
@@ -516,6 +528,10 @@ button:hover,
 
 /* Section Steps */
 
+.section-steps {
+  margin-bottom: 20px;
+}
+
 .steps-content {
   max-width: 360px;
   margin: 0 auto;
@@ -523,24 +539,75 @@ button:hover,
 
 .steps-cards {
   display: grid;
-  grid-template-columns: 94px 111px 98px;
-  justify-content: space-between;
+  grid-template-columns: 94px 113px 96px;
+  justify-content: center;
+  gap: 29px;
+  text-align: left;
 }
 
-.section-steps__card:nth-child(2) {
-  text-align: center;
+.section-steps__card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.section-steps__card:last-child {
+.section-steps__card:first-child div{
+  margin: 1px 0 -1px;
+}
+
+.section-steps__card:nth-child(2) div {
+  margin-left: 22px;
+}
+
+.section-steps__card:nth-child(2) figcaption {
+  margin-left: 2px;
+}
+
+.section-steps__card:last-child figcaption{
   text-align: right;
+  margin-top: -1px;
+}
+
+.section-steps__card:last-child div {
+  margin-left: 25px;
+  margin-top: 1px;
 }
 
 .section-steps__icon {
-  margin: 0 auto;
   width: 70px;
   height: 70px;
-  margin-bottom: 20px;
+
+  background-color: #F2785C;
+  border-radius: 16px;
 }
+
+.section-steps__icon img {
+  display: block;
+  margin: 0 auto;
+  padding-left: 1px;
+}
+
+.cyclist-icon {
+  width: 35px;
+  height: 31px;
+
+  padding-top: 19px;
+}
+
+.calendar-icon {
+  width: 35px;
+  height: 35px;
+
+  padding-top: 18px;
+}
+
+.plane-icon {
+  width: 40px;
+  height: 30px;
+
+  padding-top: 20px;
+}
+
 
 .section-steps__card-caption {
   font-family: 'Aleo';
@@ -570,13 +637,13 @@ button:hover,
 }
 
 .section-destinations__figure:before {
-content: "";
-width: 30px;
-height: 30px;
-position: absolute;
-top: 90px;
-left: 5px;
-background: url(./assets/images/svg/arrow-left.svg);
+  content: "";
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 90px;
+  left: 5px;
+  background: url(./assets/images/svg/arrow-left.svg);
 }
 
 .section-destinations__figure:after {
@@ -615,7 +682,7 @@ background: url(./assets/images/svg/arrow-left.svg);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 6px;
 }
 
 .slider-dots__dot {
@@ -627,6 +694,11 @@ background: url(./assets/images/svg/arrow-left.svg);
 
 .slider-dots__dot-active {
   background-color: #f2785c;
+  order: -1;
+}
+
+.section-destinations__button {
+  transform: translate(-0.1px);
 }
 
 /* Section stories */
