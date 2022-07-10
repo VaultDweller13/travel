@@ -373,11 +373,11 @@ body {
 }
 
 button:hover,
-  button:focus  {
-    cursor: pointer;
-    background-color: #094f5c;
-    transition: 0.3s;
-  }
+button:focus  {
+  cursor: pointer;
+  background-color: #094f5c;
+  transition: 0.3s;
+}
 
 /* Header */
 
@@ -539,9 +539,9 @@ button:hover,
 
 .steps-cards {
   display: grid;
-  grid-template-columns: 94px 113px 96px;
+  grid-template-columns: 1fr 1fr 1fr;
+
   justify-content: center;
-  gap: 29px;
   text-align: left;
 }
 
@@ -556,21 +556,24 @@ button:hover,
 }
 
 .section-steps__card:nth-child(2) div {
-  margin-left: 22px;
+  align-self: center;
+}
+
+.section-steps__card:last-child div {
+  align-self: flex-end;
+  margin: 1px 0 -1px;
+}
+
+.section-steps__card:first-child figcaption {
+  max-width: 94px;
 }
 
 .section-steps__card:nth-child(2) figcaption {
-  margin-left: 2px;
+  margin-left: 5px;
 }
 
 .section-steps__card:last-child figcaption{
   text-align: right;
-  margin-top: -1px;
-}
-
-.section-steps__card:last-child div {
-  margin-left: 25px;
-  margin-top: 1px;
 }
 
 .section-steps__icon {
@@ -633,6 +636,7 @@ button:hover,
 }
 
 .section-destinations__figure {
+  /* max-width: 100%; */
   position: relative;
 }
 
@@ -702,6 +706,10 @@ button:hover,
 }
 
 /* Section stories */
+
+.section-stories__heading {
+  margin-bottom: 10px;
+}
 .stories-cards {
   padding-bottom: 65px;
 
@@ -717,7 +725,7 @@ button:hover,
 }
 
 .stories-bg {
-  padding: 10px 0;
+  padding: 10px 0 13px;
   background: rgba(255, 255, 255, 0.7);
 }
 
@@ -739,6 +747,11 @@ button:hover,
 
 .stories-card__heading {
   margin: 5px 0 10px;
+  font-family: 'Aleo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 13px;
 }
 
 .stories-card__text {
@@ -760,6 +773,11 @@ button:hover,
     text-decoration: none;
   }
 
+.stories-button {
+  padding: 7.5px 13.5px;
+  transform: translate(0.2px);
+} 
+
 /* Footer */
 .footer {
   padding: 15px 0 16px;
@@ -771,11 +789,14 @@ button:hover,
 }
 
 .social {
+  max-width: 360px;
   display: flex;
   justify-content: center;
   gap: 20px;
   padding: 0;
-  margin: 0;
+  margin: 0 11px 0 19px;
+
+  /* transform: translate(4px); */
 }
 
 .social__item {
