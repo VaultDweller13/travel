@@ -443,6 +443,9 @@ button:focus  {
   border: none;
   border-radius: 10px;
 
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 500;
   font-size: 11px;
   line-height: 15px;
   color: #FFFFFF;
@@ -580,7 +583,7 @@ button:focus  {
 .section-steps__icon img {
   display: block;
   margin: 0 auto;
-  padding-left: 1px;
+  /* padding-left: 1px; */
 }
 
 .cyclist-icon {
@@ -719,6 +722,7 @@ button:focus  {
 
 .stories-card {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 
   margin-bottom: 15px;
@@ -889,7 +893,6 @@ button:focus  {
 
   .header__login-button {
     display: block;
-    /* max-width: 103px; */
     padding: 10px 30px;
     border: none;
     border-radius: 10px;
@@ -922,7 +925,7 @@ button:focus  {
     flex-wrap: wrap;
     gap: 10px;
     padding: 10px 32px;
-    max-width: 228px;
+    max-width: initial;
     transform: translate(1px);
 
     font-size: 24px;
@@ -1000,9 +1003,10 @@ button:focus  {
 
   /* Section Steps */
 
-  /* .section-steps {
+  .section-steps {
     margin-bottom: 97px;
-  } */
+  }
+  
 
   .steps-content {
     max-width: 1177px;
@@ -1013,52 +1017,65 @@ button:focus  {
   }
 
   .steps-cards {
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
   }
 
   .section-steps__card {
-    margin: 0;
+    gap: 30px;
   }
 
-  /* .section-steps__card:first-child {
-    margin-right: 231px;
+  .section-steps__card:first-child {
+    max-width: 247px;
   }
 
   .section-steps__card:last-child {
-    margin-left: 160px;
-  } */
+    justify-self: right;
+    max-width: 317px;
+  }
+
+  .section-steps__card:last-child div {
+    align-self: center;
+  }
 
   .section-steps__card-caption {
-    max-width: inherit;
     font-size: 20px;
     line-height: 24px;
   }
 
+  .section-steps__card:first-child figcaption {
+    max-width: initial;
+  }
+
+  .section-steps__card:nth-child(2) figcaption {
+    margin-left: 1px;
+    text-align: center;
+  }
+   
   .section-steps__icon {
     width: 100px;
     height: 100px;
     display: block;
-    margin: 0 auto 30px;
+    align-self: center;
   }
 
   .cyclist-icon {
     width: 50px;
     height: 45px;
-    padding-top: 19px;
+    padding-top: 27px;
+    padding-right: 1px;
   }
   
   .calendar-icon {
     width: 52px;
     height: 52px;
-    padding-top: 18px;
+    padding: 18px;
   }
   
   .plane-icon {
     width: 60px;
     height: 45px;
-    padding-top: 20px;
+    padding-top: 27px;
   }
 
   /* Section Destinations*/
@@ -1073,7 +1090,7 @@ button:focus  {
 
   .section-destinations__slider {
     max-width: 1440px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     justify-content: center;
     gap: 60px;
   }
@@ -1082,15 +1099,21 @@ button:focus  {
     margin: 0;
   }
 
+  .section-destinations__figure:before,
+  .section-destinations__figure:after {
+    display: none;
+  }
+
   .section-destinations__caption {
     top: auto;
-    bottom: 44px;
+    bottom: 40px;
 
     font-size: 32px;
     line-height: 42px;
   }
 
   .slider-dots {
+    position: static;
     gap: 10px;
     margin-bottom: 40px;
   }
@@ -1129,6 +1152,11 @@ button:focus  {
     margin-bottom: 40px;
   }
 
+  .stories-card__image {
+    max-width: 400px;
+    max-height: auto;
+  }
+
   .stories-card__heading {
     margin: 0 0 24px 0;
 
@@ -1156,27 +1184,41 @@ button:focus  {
     display: none;
   }
 
+  .stories-button {
+    padding: 10px 42px 10px 30px;
+  }
+
   /* Footer */
 
   .footer {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     margin-top: -62px;
     padding: 14px 0;
 
     line-height: 21px;
   }
 
+  .footer-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
   .footer__copyright {
     display: block;
     margin: 0 auto;
+    padding-left: 142px;
   }
 
   .social {
     flex-wrap: wrap;
+    margin: 0;
   }
 }
 
+@media screen and (min-width: 769px) {
+  .stories-card {
+    flex-wrap: nowrap;
+  }
+}
 
