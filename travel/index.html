@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/css2?family=Magra:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script src="./index.js"></script>
+  <script src="./index.js" defer></script>
   <title>Travel Portal</title>
   <link rel="icon" type="image/x-icon" href="./assets/images/svg/favicon.svg">
 </head>
@@ -20,11 +20,14 @@
       <div class="header__wrapper">
         <a class="header__logo-link" href="/"><img src="./assets/images/svg/favicon.svg" alt="Travel Portal" class="header__logo"><span>Travel Portal</span></a>
         <nav class="header__nav">
+          <div><img class='menu-close-button' src="./assets/images/svg/close-icon.svg" alt="Close menu button" width="30" height="30"></div>
           <ul class="header__list">
             <li class="header__item"><a href="#preview" class="header__link">How It Works</a></li>
             <li class="header__item"><a href="#steps" class="header__link">Plan Your Trip</a></li>
             <li class="header__item"><a href="#destinations" class="header__link">Destinations</a></li>
             <li class="header__item"><a href="#stories" class="header__link">Travel Stories</a></li>
+            <li class="header__item"><a href="#account" class="header__link">Account</a></li>
+            <li class="header__item"><a href="#social" class="header__link">Social Media</a></li>
           </ul>
         </nav>
         <div class="header-menu">
