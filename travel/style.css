@@ -643,7 +643,6 @@ button:focus  {
 .section-steps__icon img {
   display: block;
   margin: 0 auto;
-  /* padding-left: 1px; */
 }
 
 .cyclist-icon {
@@ -782,7 +781,6 @@ button:focus  {
 
 .stories-card {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
 
   margin-bottom: 15px;
@@ -793,6 +791,8 @@ button:focus  {
 }
 
 .stories-card__image {
+  align-self: center;
+
   filter: drop-shadow(0px 4px 4px #0D606F);
   border-radius: 16px;
 }
@@ -848,8 +848,6 @@ button:focus  {
   gap: 20px;
   padding: 0;
   margin: 0 11px 0 19px;
-
-  /* transform: translate(4px); */
 }
 
 .social__item {
@@ -919,23 +917,30 @@ button:focus  {
   }
 
   .header__nav {
-    display: block;
-    position: static;
+    position: initial;
     transform: translateX(0);
     padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
   }
 
   .header__list {
     display: flex;
     flex-wrap: wrap;
     gap: 42px;
-    margin: 0 30px 0 0;
+    margin: 0 0 0 50px;
     padding: 10px 0;
-    list-style: none;
   }
 
   .header__item {
     line-height: 21px;
+    margin: 0;
+  }
+
+  .anchor-account, 
+  .anchor-social {
+    display: none;
   }
 
   .header__link,
@@ -1215,11 +1220,6 @@ button:focus  {
     margin-bottom: 40px;
   }
 
-  .stories-card__image {
-    max-width: 400px;
-    max-height: auto;
-  }
-
   .stories-card__heading {
     margin: 0 0 24px 0;
 
@@ -1279,9 +1279,9 @@ button:focus  {
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 391px) and (max-width: 768px){
   .stories-card {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
 }
 
