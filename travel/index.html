@@ -8,8 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Magra:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script src="./index.js"></script>
+  <script src="./index.js" defer></script>
   <title>Travel Portal</title>
   <link rel="icon" type="image/x-icon" href="./assets/images/svg/favicon.svg">
 </head>
@@ -17,15 +18,21 @@
   <header class="header">
     <div class="wrapper">
       <div class="header__wrapper">
-        <a class="header__logo-link" href="/"><img src="./assets/images/svg/logo.svg" alt="Travel Portal" class="header__logo"></a>
+        <a class="header__logo-link" href="/"><img src="./assets/images/svg/favicon.svg" alt="Travel Portal" class="header__logo"><span>Travel Portal</span></a>
         <nav class="header__nav">
+          <div><img class='menu-close-button' src="./assets/images/svg/close-icon.svg" alt="Close menu button" width="30" height="30"></div>
           <ul class="header__list">
             <li class="header__item"><a href="#preview" class="header__link">How It Works</a></li>
             <li class="header__item"><a href="#steps" class="header__link">Plan Your Trip</a></li>
             <li class="header__item"><a href="#destinations" class="header__link">Destinations</a></li>
             <li class="header__item"><a href="#stories" class="header__link">Travel Stories</a></li>
+            <li class="header__item"><a href="#account" class="header__link anchor-account">Account</a></li>
+            <li class="header__item"><a href="#social" class="header__link anchor-social">Social Media</a></li>
           </ul>
         </nav>
+        <div class="header-menu">
+          <img src="./assets/images/svg/menu-icon.svg" alt="Menu button" class="menu-icon" width="35" height="32">
+        </div>
         <button class="header__login-button">Login</button>
       </div>
     </div>
@@ -46,15 +53,21 @@
         <h2 class="section-heading section-steps__heading">3 STEPS TO THE PERFECT TRIP</h2>
         <div class="steps-cards">
           <figure class="section-steps__card">
-            <img class="section-steps__icon" src="./assets/images/svg/action-icon.svg" alt="Cyclist icon" width="100" height="100">
+            <div class="section-steps__icon">
+              <img class="cyclist-icon" src="./assets/images/svg/action-icon.svg" alt="Cyclist icon">
+            </div>
             <figcaption class="section-steps__card-caption">Tell us what you want to do</figcaption>
           </figure>
           <figure class="section-steps__card">
-            <img class="section-steps__icon" src="./assets//images/svg/dates-icon.svg" alt="Calendar icon" width="100" height="100">
+            <div class="section-steps__icon">
+              <img class="calendar-icon" src="./assets//images/svg/dates-icon.svg" alt="Calendar icon" width="100" height="100">
+            </div>
             <figcaption class="section-steps__card-caption">Share us preferable dates </figcaption>
           </figure>
           <figure class="section-steps__card">
-            <img class="section-steps__icon" src="./assets/images/svg/recommendations-icon.svg" alt="Plane icon" width="100" height="100">
+            <div class="section-steps__icon" >
+              <img class="plane-icon" src="./assets/images/svg/recommendations-icon.svg" alt="Plane icon" width="100" height="100">
+            </div>
             <figcaption class="section-steps__card-caption">We will give you recommendations</figcaption>
           </figure>
         </div>
@@ -64,15 +77,24 @@
       <h2 class="section-heading section-destinations__heading">POPULAR DESTINATIONS</h2>
       <div class="section-destinations__slider">
         <figure class="section-destinations__figure">
-          <img class="section-destinations__image" src="./assets/images/destinations-1.jpg" alt="Spain landscape">
+          <img class="section-destinations__image"
+              srcset="./assets/images/destinations-1-m.jpg 360w, ./assets/images/destinations-1.jpg 800w"
+              sizes="(max-width: 390px) 360px, 800px"
+              src="./assets/images/destinations-1.jpg" alt="Spain landscape">
           <figcaption class="section-destinations__caption">Spain</figcaption>
         </figure>
         <figure class="section-destinations__figure">
-          <img class="section-destinations__image" src="./assets/images/destinations-2.jpg" alt="Japanese landscape">
+          <img class="section-destinations__image" 
+          srcset="./assets/images/destinations-2-m.jpg 360w, ./assets/images/destinations-2.jpg 800w"
+          sizes="(max-width: 390px) 360px, 800px"
+          src="./assets/images/destinations-2.jpg" alt="Japanese landscape">
           <figcaption class="section-destinations__caption">Japan</figcaption>
         </figure>
         <figure class="section-destinations__figure">
-          <img class="section-destinations__image" src="./assets/images/destinations-3.jpg" alt="USA Golden Gate bridge">
+          <img class="section-destinations__image" 
+          srcset="./assets/images/destinations-3-m.jpg 360w, ./assets/images/destinations-3.jpg 800w"
+          sizes="(max-width: 390px) 360px, 800px"
+          src="./assets/images/destinations-3.jpg" alt="USA Golden Gate bridge">
           <figcaption class="section-destinations__caption">USA</figcaption>
         </figure>
       </div>
@@ -81,7 +103,7 @@
         <div class="slider-dots__dot slider-dots__dot-active"></div>
         <div class="slider-dots__dot"></div>
       </div>
-      <button class="section__button-forward">Find More</button>
+      <button class="section__button-forward section-destinations__button">Find More</button>
     </section>
     <section class="section section-stories" id="stories">
       <h2 class="section-heading section-stories__heading">TRAVEL STORIES</h2>
@@ -89,7 +111,10 @@
         <div class="stories-bg">
           <div class="wrapper">
             <div class="stories-card">
-              <img class="stories-card__image" src="./assets/images/stories-1.jpg" alt="Thailand landscape" width="400" height="250">
+              <img class="stories-card__image" 
+              srcset="./assets/images/stories-1-m.jpg 155w, ./assets/images/stories-1.jpg 400w"
+              sizes="(max-width: 390px) 155px, 400px"
+              src="./assets/images/stories-1.jpg" alt="Thailand landscape">
               <div class="stories-card__description">
                 <h3 class="stories-card__heading">10 Photos of Attractive Thailand</h3>
                 <p class="stories-card__text" lang="zxx">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -97,11 +122,19 @@
                   laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
                   voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                   non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
-                  sit amet, consectetur adipiscing elit... <a class="stories-card__link" href="#">Read More</a></p>
+                  sit amet, consectetur adipiscing elit...</p>
+                <p class="stories-card__text-m">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                  ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+                  Lorem ipsum dolor sit a...</p>
+                <a class="stories-card__link" href="#">Read More</a>
               </div>
             </div>
             <div class="stories-card">
-              <img class="stories-card__image" src="./assets/images/stories-2.jpg" alt="Utah canyon landscape" width="400" height="250">
+              <img class="stories-card__image" 
+              srcset="./assets/images/stories-2-m.jpg 155w, ./assets/images/stories-2.jpg 400w"
+              sizes="(max-width: 390px) 155px, 400px"
+              src="./assets/images/stories-2.jpg" alt="Utah canyon landscape">
               <div class="stories-card__description">
                 <h3 class="stories-card__heading">Canyonlands National Park, Utah</h3>
                 <p class="stories-card__text" lang="zxx">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -109,11 +142,19 @@
                   laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
                   voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                   non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
-                  sit amet, consectetur adipiscing elit... <a class="stories-card__link" href="#">Read More</a></p>
+                  sit amet, consectetur adipiscing elit...</p>
+                <p class="stories-card__text-m">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                  ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+                  Lorem ipsum dolor sit a...</p>
+                <a class="stories-card__link" href="#">Read More</a>
               </div>
             </div>
             <div class="stories-card">
-              <img class="stories-card__image" src="./assets/images/stories-3.jpg" alt="Mountains landscape" width="400" height="250">
+              <img class="stories-card__image" 
+              srcset="./assets/images/stories-3-m.jpg 155w, ./assets/images/stories-3.jpg 400w"
+              sizes="(max-width: 390px) 155px, 400px"
+              src="./assets/images/stories-3.jpg" alt="Mountains landscape">
               <div class="stories-card__description">
                 <h3 class="stories-card__heading">I left my heart in the Mountains!</h3>
                 <p class="stories-card__text" lang="zxx">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -121,11 +162,19 @@
                   laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
                   voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                   non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
-                  sit amet, consectetur adipiscing elit... <a class="stories-card__link" href="#">Read More</a></p>
+                  sit amet, consectetur adipiscing elit...</p> 
+                  <p class="stories-card__text-m">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+                    Lorem ipsum dolor sit a...</p>
+                <a class="stories-card__link" href="#">Read More</a>
               </div>
             </div>
             <div class="stories-card">
-              <img class="stories-card__image" src="./assets/images/stories-4.jpg" alt="Desert road landscape" width="400" height="250">
+              <img class="stories-card__image" 
+              srcset="./assets/images/stories-4-m.jpg 155w, ./assets/images/stories-4.jpg 400w"
+              sizes="(max-width: 390px) 155px, 400px"
+              src="./assets/images/stories-4.jpg" alt="Desert road landscape">
               <div class="stories-card__description">
                 <h3 class="stories-card__heading">The Longest journey in my life!</h3>
                 <p class="stories-card__text" lang="zxx">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -133,34 +182,41 @@
                   laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
                   voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                   non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
-                  sit amet, consectetur adipiscing elit... <a class="stories-card__link" href="#">Read More</a></p>
+                  sit amet, consectetur adipiscing elit...</p>
+                <p class="stories-card__text-m">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                  ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+                  Lorem ipsum dolor sit a...</p>
+                <a class="stories-card__link" href="#">Read More</a>
               </div>
             </div>
           </div>
-          <button class="section__button-forward">See More</button>
+          <button class="section__button-forward stories-button">See More</button>
         </div>
       </div>
     </section>
   </main>
   <footer class="footer">
-    <p class="footer__copyright">All Rights Reserved © Travel Portal</p>
-    <ul class="social">
-      <li class="social__item">
-        <a href="https://github.com/VaultDweller13" class="social__link">
-          <img src="./assets/images/svg/instagram-icon.svg" alt="Instagram icon" class="social__icon">
-        </a>
-      </li>
-      <li class="social__item">
-        <a href="https://www.youtube.com/c/RollingScopesSchool" class="social__link">
-          <img src="./assets/images/svg/youtube-icon.svg" alt="Youtube icon" class="footer__icon">
-        </a>
-      </li>
-      <li class="social__item">
-        <a href="https://rs.school/js-stage0/" class="social__link">
-          <img src="./assets/images/svg/twitter-icon.svg" alt="Twitter icon" class="social__icon">
-        </a>
-      </li>
-    </ul>
+    <div class="wrapper footer-wrapper">
+      <p class="footer__copyright">All Rights Reserved © Travel Portal</p>
+      <ul class="social">
+        <li class="social__item">
+          <a href="https://github.com/VaultDweller13" class="social__link">
+            <img src="./assets/images/svg/instagram-icon.svg" alt="Instagram icon" class="social__icon">
+          </a>
+        </li>
+        <li class="social__item">
+          <a href="https://www.youtube.com/c/RollingScopesSchool" class="social__link">
+            <img src="./assets/images/svg/youtube-icon.svg" alt="Youtube icon" class="footer__icon">
+          </a>
+        </li>
+        <li class="social__item">
+          <a href="https://rs.school/js-stage0/" class="social__link">
+            <img src="./assets/images/svg/twitter-icon.svg" alt="Twitter icon" class="social__icon">
+          </a>
+        </li>
+      </ul>
+    </div>
   </footer>
 </body>
 </html>
