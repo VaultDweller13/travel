@@ -352,6 +352,7 @@ template {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 figure {
@@ -365,6 +366,7 @@ body {
   font-weight: 500;
   font-size: 16px;
   color: #ffffff;
+  overflow-x: hidden;
 }
 
 .wrapper {
@@ -405,7 +407,7 @@ button:focus  {
 }
 
 .header__nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   z-index: 2;
@@ -454,7 +456,6 @@ button:focus  {
 .header__item:last-child {
   margin-bottom: 0;
 }
-
 
 .header__login-button {
   display: none;
@@ -530,7 +531,6 @@ button:focus  {
   max-width: 360px;
   margin: 0 auto;
   padding: 142px 0 61px;
-
 }
 
 .section-preview__heading {
@@ -666,7 +666,6 @@ button:focus  {
   padding-top: 20px;
 }
 
-
 .section-steps__card-caption {
   font-family: 'Aleo';
   font-style: normal;
@@ -712,7 +711,7 @@ button:focus  {
   top: 90px;
   right: 5px;
   background: url(./assets/images/svg/arrow-right-bold.svg);
-  }
+}
 
 .section-destinations__image {
   display: block;
@@ -723,6 +722,7 @@ button:focus  {
   position: absolute;
   left: 15px;
   top: 8px;
+  margin: 0;
 
   font-size: 20px;
   line-height: 26px;
@@ -764,6 +764,7 @@ button:focus  {
   padding-bottom: 65px;
 
   background: url(./assets/images/bg-bottom-m.jpg) no-repeat;
+  background-size: cover;
 
   font-family: 'Aleo';
   font-style: normal;
@@ -791,6 +792,7 @@ button:focus  {
 }
 
 .stories-card__image {
+  display: block;
   align-self: center;
 
   filter: drop-shadow(0px 4px 4px #0D606F);
@@ -823,8 +825,8 @@ button:focus  {
 .stories-card__link:hover,
 .stories-card__link:focus,
 .stories-card__link:active {
-    text-decoration: none;
-  }
+  text-decoration: none;
+}
 
 .stories-button {
   padding: 7.5px 13.5px;
@@ -1005,7 +1007,6 @@ button:focus  {
     height: 40px;
   }
 
-
   /* Section Preview */
 
   .section-preview {
@@ -1074,7 +1075,6 @@ button:focus  {
   .section-steps {
     margin-bottom: 97px;
   }
-  
 
   .steps-content {
     max-width: 1177px;
@@ -1205,6 +1205,7 @@ button:focus  {
     padding-bottom: 62px;
     background: url(./assets/images/bg-bottom.jpg) no-repeat;
     background-blend-mode: color;
+    background-size: cover;
   }
 
   .stories-bg {
