@@ -77,24 +77,27 @@
       <h2 class="section-heading section-destinations__heading">POPULAR DESTINATIONS</h2>
       <div class="section-destinations__slider">
         <figure class="section-destinations__figure">
-          <img class="section-destinations__image"
-              srcset="./assets/images/destinations-1-m.jpg 360w, ./assets/images/destinations-1.jpg 800w"
-              sizes="(max-width: 390px) 360px, 800px"
-              src="./assets/images/destinations-1.jpg" alt="Spain landscape">
+          <picture>
+              <source srcset="./assets/images/destinations-1-m.jpg" media="(max-width: 390px)">
+              <source srcset="./assets/images/destinations-1.jpg" media="(min-width: 391px)">
+              <img class="section-destinations__image" src="./assets/images/destinations-1.jpg" alt="Spain landscape">
+          </picture>
           <figcaption class="section-destinations__caption">Spain</figcaption>
         </figure>
         <figure class="section-destinations__figure">
-          <img class="section-destinations__image" 
-          srcset="./assets/images/destinations-2-m.jpg 360w, ./assets/images/destinations-2.jpg 800w"
-          sizes="(max-width: 390px) 360px, 800px"
-          src="./assets/images/destinations-2.jpg" alt="Japanese landscape">
+          <picture >
+            <source srcset="./assets/images/destinations-2-m.jpg" media="(max-width: 390px)">
+            <source srcset="./assets/images/destinations-2.jpg" media="(min-width: 391px)">
+            <img class="section-destinations__image" src="./assets/images/destinations-2.jpg" alt="Japanese landscape">
+          </picture>
           <figcaption class="section-destinations__caption">Japan</figcaption>
         </figure>
         <figure class="section-destinations__figure">
-          <img class="section-destinations__image" 
-          srcset="./assets/images/destinations-3-m.jpg 360w, ./assets/images/destinations-3.jpg 800w"
-          sizes="(max-width: 390px) 360px, 800px"
-          src="./assets/images/destinations-3.jpg" alt="USA Golden Gate bridge">
+          <picture class="section-destinations__image"> 
+            <source srcset="./assets/images/destinations-3-m.jpg" media="(max-width: 390px)">
+            <source srcset="./assets/images/destinations-3.jpg" media="(min-width: 391px)">
+            <img src="./assets/images/destinations-3.jpg" alt="USA Golden Gate bridge">
+          </picture>
           <figcaption class="section-destinations__caption">USA</figcaption>
         </figure>
       </div>
