@@ -5,6 +5,8 @@ const menuButton = document.querySelector('.header-menu');
 const menuIcon = document.querySelector('.menu-icon');
 const headerNav = document.querySelector('.header__nav');
 const list = document.querySelector('.header__list');
+const loginButton = document.querySelector('.header__login-button');
+const loginPopup = document.querySelector('.login-form');
 
 menuButton.addEventListener('click', function(){menu.classList.add('header__nav-open')});
 document.addEventListener('click', (e) => {
@@ -17,6 +19,7 @@ document.addEventListener('click', (e) => {
    }
 });
 
+loginButton.addEventListener('click', () => loginPopup.classList.toggle('login-form-active'));
 
 console.log(`Ваша оценка - 85 баллов 
 Отзыв по пунктам ТЗ:
