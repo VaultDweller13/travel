@@ -355,6 +355,10 @@ html {
   overflow-x: hidden;
 }
 
+.html-popup-open {
+  overflow: hidden;
+}
+
 figure {
   margin: 0;
 }
@@ -367,6 +371,10 @@ body {
   font-size: 16px;
   color: #ffffff;
   overflow-x: hidden;
+}
+
+.body-popup-open {
+  overflow: hidden;
 }
 
 .wrapper {
@@ -477,16 +485,37 @@ button:focus  {
   cursor: pointer;
 }
 
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.popup-container-active {
+  display: block;
+}
+
 .login-form {
   display: flex;
+  align-items: center;
   position: absolute;
+  top: 16.3vh;
+  left: 20.6vw;
+  z-index: 3;
 
   max-width: 650px;
   width: 100%;
   box-sizing: border-box;
   flex-direction: column;
-  /* margin: 0 auto; */
-  padding: 25px 45px 23px;
+  /* padding: 25px 45px 23px; */
 
   transform: translateY(-150%);
 
@@ -498,17 +527,16 @@ button:focus  {
   background: linear-gradient(177.09deg, #FFFFFF 6.15%, #0D606F 202.69%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
-  transition: (1.5s);
+  transition: 0.5s;
 
 }
 
 .login-form-active {
   display: flex;
-  top: 50%;
-  left: 30%;
+  
   transform: translateY(0);
 
-  transition: (1.5s);
+  transition: 0.5s;
 }
 
 .login-form__header {
@@ -529,6 +557,7 @@ button:focus  {
 
 .login-form__input {
   max-width: 560px;
+  width: 100%;
   flex: 1 0 54px;
   padding: 0;
   border: 0;
@@ -542,11 +571,12 @@ button:focus  {
   margin-top: 20px;
 }
 
-input:last-of-type {
+.login-form input:last-of-type {
   margin-bottom: 25px;
 }
 
 .login-form__button {
+  width: 100%;
   max-width: 560px;
   flex: 1 0 56px;
 
@@ -595,7 +625,14 @@ input:last-of-type {
 .login-form__divider {
   display: flex;
   align-items: center;
+  width: 100%;
   margin: 26px 0 20px 0;
+
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: rgba(13, 96, 111, 0.5);
 }
 
 .login-form__divider:before,
@@ -617,6 +654,15 @@ input:last-of-type {
 
 .divider-text:after {
   margin-left: 9px;
+}
+
+.login-form__footer {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+
+  color: rgba(13, 96, 111, 0.5);
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
 }
 
 .login-form__link {

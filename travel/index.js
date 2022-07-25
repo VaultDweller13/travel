@@ -1,12 +1,16 @@
 'use strict'
 
+const html = document.querySelector('html');
+const body = document.querySelector('body');
 const menu = document.querySelector('.header__nav');
 const menuButton = document.querySelector('.header-menu');
 const menuIcon = document.querySelector('.menu-icon');
 const headerNav = document.querySelector('.header__nav');
 const list = document.querySelector('.header__list');
 const loginButton = document.querySelector('.header__login-button');
+const popupContainer = document.querySelector('.popup-container');
 const loginPopup = document.querySelector('.login-form');
+
 
 menuButton.addEventListener('click', function(){menu.classList.add('header__nav-open')});
 document.addEventListener('click', (e) => {
@@ -19,7 +23,19 @@ document.addEventListener('click', (e) => {
    }
 });
 
-loginButton.addEventListener('click', () => loginPopup.classList.toggle('login-form-active'));
+loginButton.addEventListener('click', () => {
+   popupContainer.classList.add('popup-container-active');
+   loginPopup.classList.add('login-form-active');
+   body.classList.add('body-popup-open');
+   html.classList.add('html-popup-open');
+});
+
+popupContainer.addEventListener('click', () => {
+   popupContainer.classList.remove('popup-container-active');
+   loginPopup.classList.remove('login-form-active');
+   body.classList.remove('body-popup-open');
+   html.classList.remove('html-popup-open');
+});
 
 console.log(`Ваша оценка - 85 баллов 
 Отзыв по пунктам ТЗ:
