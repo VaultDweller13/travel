@@ -10,7 +10,13 @@ const list = document.querySelector('.header__list');
 const loginButton = document.querySelector('.header__login-button');
 const popupContainer = document.querySelector('.popup-container');
 const loginPopup = document.querySelector('.login-form');
+const signUpPopup = document.querySelector('.sign-up-form');
+const signInButton = document.querySelector('.button-sign-in');
+const accountButton = document.querySelector('.anchor-account');
 
+const popupSwitch = document.querySelectorAll('.popup-switch')
+
+// Burger menu
 
 menuButton.addEventListener('click', function(){menu.classList.add('header__nav-open')});
 document.addEventListener('click', (e) => {
@@ -23,49 +29,67 @@ document.addEventListener('click', (e) => {
    }
 });
 
+// Pop-ups
+
 loginButton.addEventListener('click', () => {
    popupContainer.classList.add('popup-container-active');
    loginPopup.classList.add('login-form-active');
+   signUpPopup.classList.add('login-form-active');
    body.classList.add('body-popup-open');
    html.classList.add('html-popup-open');
 });
 
-popupContainer.addEventListener('click', () => {
-   popupContainer.classList.remove('popup-container-active');
-   loginPopup.classList.remove('login-form-active');
-   body.classList.remove('body-popup-open');
-   html.classList.remove('html-popup-open');
+accountButton.addEventListener('click', () => {
+   popupContainer.classList.add('popup-container-active');
+   loginPopup.classList.add('login-form-active');
+   signUpPopup.classList.add('login-form-active');
+   body.classList.add('body-popup-open');
+   html.classList.add('html-popup-open');
 });
 
-console.log(`Ваша оценка - 85 баллов 
-Отзыв по пунктам ТЗ:
-Выполненные пункты:
-1) Блок header 
+popupContainer.addEventListener('click', (e) => {
+   if (e.target === popupContainer) {
+      popupContainer.classList.remove('popup-container-active');
+      loginPopup.classList.remove('login-form-active');
+      signUpPopup.classList.remove('login-form-active');
+      signUpPopup.classList.add('hidden');
+      loginPopup.classList.remove('hidden');
+      body.classList.remove('body-popup-open');
+      html.classList.remove('html-popup-open');
+   }
+});
 
-2) Секция preview 
+popupSwitch.forEach(element => {
+   element.addEventListener('click', () => {
+      loginPopup.classList.toggle('hidden');
+      signUpPopup.classList.toggle('hidden');
+   });
+});
 
-3) Секция steps 
+signInButton.addEventListener('click', (e) => {
+   let email = loginPopup.querySelector('#email').value;
+   let password = loginPopup.querySelector('#password').value;
 
-4) Секция destinations 
+   alert(`Email: ${email}\nPassword: ${password}`);
+});
 
-5) Секция stories 
+// Carousel/Slider
 
-6) Блок footer 
+const slider = document.querySelector('.section-destinations__slider');
+const slides = Array.from(slider.children);
 
-7) нет полосы прокрутки при ширине страницы от 1440рх до 390px 
+const slideWidth = 800;
 
-8) нет полосы прокрутки при ширине страницы от 390px до 320рх 
+let leftSlideButton = slides[0];
+let rightSlideButton = slides[2];
 
-9) при ширине страницы 390рх панель навигации скрывается, появляется бургер-иконка 
+leftSlideButton.addEventListener('click', e => {
+   console.log(leftSlideButton)
+   slider.style.transform = `translateX(${slideWidth}px)`;
+   leftSlideButton.nextElementSibling.classList.remove('current-slide');
+   leftSlideButton.classList.add('current-slide');
+});
 
-10) при нажатии на бургер-иконку плавно появляется адаптивное меню 
-
-11) адаптивное меню соответствует макету 
-
-12) при нажатии на крестик адаптивное меню плавно скрывается уезжая за экран 
-
-13) ссылки в адаптивном меню работают, обеспечивая плавную прокрутку по якорям (все, кроме Account, она пока просто закрывает меню) 
-
-14) при клике по ссылке в адаптивном меню адаптивное меню плавно скрывается, также скрытие меню происходит если сделать клик вне данного окна 
-
-`)
+rightSlideButton.addEventListener('click', e => {
+   slider.style.transform = `translateX(${-slideWidth}px)`;
+});
