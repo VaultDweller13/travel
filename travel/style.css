@@ -855,17 +855,24 @@ input:last-of-type {
 .section-destinations {
   position: relative;
   margin-bottom: 20px;
+  overflow: hidden;
 }
 
 .section-destinations__slider {
   max-width: 360px;
   margin: 0 auto 10px;
   display: flex;
-  overflow: hidden;
+
+  transition: transform 1.5s ease-out;
 }
 
 .section-destinations__figure {
   position: relative;
+  cursor: pointer;
+}
+
+.section-destinations__figure.current-slide {
+  cursor: default;
 }
 
 .section-destinations__figure:before {
@@ -919,6 +926,8 @@ input:last-of-type {
   height: 8px;
   background-color: rgba(242, 120, 92, 0.5);
   border-radius: 50%; 
+
+  cursor: pointer;
 }
 
 .slider-dots__dot-active {
@@ -1332,7 +1341,7 @@ input:last-of-type {
   }
 
   .section-destinations__slider {
-    max-width: 1440px;
+    max-width: 5560px;
     margin-bottom: 24px;
     justify-content: center;
     gap: 60px;
