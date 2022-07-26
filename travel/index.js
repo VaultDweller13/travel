@@ -86,8 +86,12 @@ let currentPosition = 0;
 
 const slideWidth = 860;
 
-slider.insertBefore(slides[slides.length - 1].cloneNode(true), slides[0]);
-slider.append(slides[0].cloneNode(true));
+const mediaQuery = window.matchMedia('(min-width: 391px)')
+
+if (mediaQuery.matches) {
+   slider.insertBefore(slides[slides.length - 1].cloneNode(true), slides[0]);
+   slider.append(slides[0].cloneNode(true));
+}
 
 slider.addEventListener('click', (e) => {
    if (e.composedPath().includes(leftSlide) && leftSlide.previousElementSibling) {
@@ -149,3 +153,27 @@ function updateDots(currentDot, targetDot) {
    currentDot.classList.remove('slider-dots__dot-active');
    targetDot.classList.add('slider-dots__dot-active');
 }
+
+// Carousel/Slider mobile
+
+const buttonLeft = document.querySelector('.button-left');
+const buttonRight = document.querySelector('.button-right');
+
+console.log(buttonLeft);
+buttonLeft.addEventListener('click', e => {
+   console.log('left click');
+   moveSlide(360, currentSlide.previousElementSibling);
+   const currentDot = dotNav.querySelector('.slider-dots__dot-active');
+   const targetDot = currentDot.previousElementSibling;
+   updateDots(currentDot, targetDot);
+   initialiseSlides(slider);
+});
+
+buttonRight.addEventListener('click', e => {
+   console.log('right click');
+   moveSlide(-360, currentSlide.nextElementSibling);
+   const currentDot = dotNav.querySelector('.slider-dots__dot-active');
+   const targetDot = currentDot.nextElementSibling;
+   updateDots(currentDot, targetDot);
+   initialiseSlides(slider);
+});
