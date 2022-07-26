@@ -1,10 +1,22 @@
 'use strict'
 
+const html = document.querySelector('html');
+const body = document.querySelector('body');
 const menu = document.querySelector('.header__nav');
 const menuButton = document.querySelector('.header-menu');
 const menuIcon = document.querySelector('.menu-icon');
 const headerNav = document.querySelector('.header__nav');
 const list = document.querySelector('.header__list');
+const loginButton = document.querySelector('.header__login-button');
+const popupContainer = document.querySelector('.popup-container');
+const loginPopup = document.querySelector('.login-form');
+const signUpPopup = document.querySelector('.sign-up-form');
+const signInButton = document.querySelector('.button-sign-in');
+const accountButton = document.querySelector('.anchor-account');
+
+const popupSwitch = document.querySelectorAll('.popup-switch')
+
+// Burger menu
 
 menuButton.addEventListener('click', function(){menu.classList.add('header__nav-open')});
 document.addEventListener('click', (e) => {
@@ -17,36 +29,230 @@ document.addEventListener('click', (e) => {
    }
 });
 
+// Pop-ups
 
-console.log(`Ваша оценка - 85 баллов 
+loginButton.addEventListener('click', () => {
+   popupContainer.classList.add('popup-container-active');
+   loginPopup.classList.add('login-form-active');
+   signUpPopup.classList.add('login-form-active');
+   body.classList.add('body-popup-open');
+   html.classList.add('html-popup-open');
+});
+
+accountButton.addEventListener('click', () => {
+   popupContainer.classList.add('popup-container-active');
+   loginPopup.classList.add('login-form-active');
+   signUpPopup.classList.add('login-form-active');
+   body.classList.add('body-popup-open');
+   html.classList.add('html-popup-open');
+});
+
+popupContainer.addEventListener('click', (e) => {
+   if (e.target === popupContainer) {
+      popupContainer.classList.remove('popup-container-active');
+      loginPopup.classList.remove('login-form-active');
+      signUpPopup.classList.remove('login-form-active');
+      signUpPopup.classList.add('hidden');
+      loginPopup.classList.remove('hidden');
+      body.classList.remove('body-popup-open');
+      html.classList.remove('html-popup-open');
+   }
+});
+
+popupSwitch.forEach(element => {
+   element.addEventListener('click', () => {
+      loginPopup.classList.toggle('hidden');
+      signUpPopup.classList.toggle('hidden');
+   });
+});
+
+signInButton.addEventListener('click', (e) => {
+   let email = loginPopup.querySelector('#email').value;
+   let password = loginPopup.querySelector('#password').value;
+
+   alert(`Email: ${email}\nPassword: ${password}`);
+});
+
+// Desktop
+
+const mediaQuery = window.matchMedia('(min-width: 391px)')
+
+function handleDeviceMode(e) {
+   e.matches ? initialiseDesktopSlider() : initialiseMobileSlider();
+}
+
+mediaQuery.addEventListener('change', handleDeviceMode);
+handleDeviceMode(mediaQuery);
+
+function initialiseDesktopSlider() {
+   const slider = document.querySelector('.section-destinations__slider');
+   const dotNav = document.querySelector('.slider-dots');
+   const dots = Array.from(dotNav.children);
+   let slides = Array.from(slider.children);
+   let currentSlide = slider.querySelector('.current-slide');
+   let leftSlide = currentSlide.previousElementSibling;
+   let rightSlide = currentSlide.nextElementSibling;
+   let currentPosition = 0;
+
+   const slideWidth = 860;
+
+   slider.insertBefore(slides[slides.length - 1].cloneNode(true), slides[0]);
+   slider.append(slides[0].cloneNode(true));
+
+   slider.addEventListener('click', (e) => {
+      if (e.composedPath().includes(leftSlide) && leftSlide.previousElementSibling) {
+         moveSlide(slideWidth, leftSlide);
+         const currentDot = dotNav.querySelector('.slider-dots__dot-active');
+         const targetDot = currentDot.previousElementSibling;
+         updateDots(currentDot, targetDot);
+         updateSlides(slider);
+      } else if (e.composedPath().includes(rightSlide) && rightSlide.nextElementSibling) {
+         moveSlide(-slideWidth, rightSlide);
+         const currentDot = dotNav.querySelector('.slider-dots__dot-active');
+         const targetDot = currentDot.nextElementSibling;
+         updateDots(currentDot, targetDot);
+         updateSlides(slider);
+      }
+   });
+
+   dotNav.addEventListener('click', e => {
+      const targetDot = e.target.closest('.slider-dots__dot');
+
+      if (!targetDot) return;
+
+      slides = Array.from(slider.children);
+      const currentDot = dotNav.querySelector('.slider-dots__dot-active');
+      const currentIndex = dots.findIndex(dot => dot === currentDot);
+      const targetIndex = dots.findIndex(dot => dot === targetDot);
+      const targetSlide = slides.slice(1, slides.length - 1)[targetIndex];
+      const amountToMove = (currentIndex - targetIndex) * slideWidth;
+      moveSlide(amountToMove, targetSlide);
+      updateDots(currentDot, targetDot);
+      updateSlides(slider);
+   });
+
+   function updateSlides(slider) {
+      slides = Array.from(slider.children);
+      currentSlide = slider.querySelector('.current-slide');
+      leftSlide = currentSlide.previousElementSibling;
+      rightSlide = currentSlide.nextElementSibling;
+
+      if (!leftSlide.previousElementSibling) {
+         leftSlide.classList.add('slide-non-active');
+      }
+
+      if (!rightSlide.nextElementSibling) {
+         rightSlide.classList.add('slide-non-active');
+      }
+   }
+
+   function moveSlide(amount, targetSlide) {
+      currentPosition += amount;
+      slider.style.transform = `translateX(${currentPosition}px)`;
+      currentSlide.classList.remove('current-slide');
+      targetSlide.classList.add('current-slide');
+   }
+   
+   function updateDots(currentDot, targetDot) {
+      currentDot.classList.remove('slider-dots__dot-active');
+      targetDot.classList.add('slider-dots__dot-active');
+   }
+}
+
+// Mobile
+
+function initialiseMobileSlider() {
+   const slider = document.querySelector('.section-destinations__slider');
+   const slides = Array.from(slider.children);
+   const dotNav = document.querySelector('.slider-dots');
+   const dots = Array.from(dotNav.children);
+   const buttonLeft = document.querySelector('.button-left');
+   const buttonRight = document.querySelector('.button-right');
+
+   let currentSlide = document.querySelector('.current-slide');
+   setCurrentSlide(slides[0]);
+   let currentDot = dotNav.querySelector('.slider-dots__dot-active');
+   setCurrentDot(dots[0]);
+   setButtonsIcons();
+
+   let currentPosition = 0;
+   const slideWidth = 375;
+
+   buttonLeft.addEventListener('click', e => {
+      if (!currentSlide.previousElementSibling) return;
+      moveSlide(slideWidth, currentSlide.previousElementSibling);
+      setCurrentDot(currentDot.previousElementSibling);
+   });
+
+   buttonRight.addEventListener('click', e => {
+      if (!currentSlide.nextElementSibling) return;
+      moveSlide(-slideWidth, currentSlide.nextElementSibling);
+      setCurrentDot(currentDot.nextElementSibling);
+   });
+
+   dotNav.addEventListener('click', e => {
+      const targetDot = e.target.closest('.slider-dots__dot');
+
+      if (!targetDot) return;
+
+      const currentIndex = dots.findIndex(dot => dot === currentDot);
+      const targetIndex = dots.findIndex(dot => dot === targetDot);
+      const targetSlide = slides[targetIndex];
+      const amountToMove = (currentIndex - targetIndex) * slideWidth;
+      moveSlide(amountToMove, targetSlide);
+      setCurrentDot(targetDot);
+   });
+
+   function moveSlide(amount, targetSlide) {
+      currentPosition += amount;
+      slider.style.transform = `translateX(${currentPosition}px)`;
+      setCurrentSlide(targetSlide);
+      setButtonsIcons();
+   }
+   
+   function setCurrentDot(targetDot) {
+      currentDot.classList.remove('slider-dots__dot-active');
+      targetDot.classList.add('slider-dots__dot-active');
+      currentDot = dotNav.querySelector('.slider-dots__dot-active');
+   }
+
+   function setCurrentSlide(targetSlide) {
+      currentSlide.classList.remove('current-slide');
+      targetSlide.classList.add('current-slide');
+      currentSlide = document.querySelector('.current-slide');
+   }
+
+   function setButtonsIcons() {
+      if (!currentSlide.previousElementSibling) {
+         buttonLeft.style.background = 'url(./assets/images/svg/arrow-left.svg)'
+      } else {
+         buttonLeft.style.background = 'url(./assets/images/svg/arrow-left-bold.svg)'
+      }
+
+      if (!currentSlide.nextElementSibling) {
+         buttonRight.style.background = 'url(./assets/images/svg/arrow-right.svg)'
+      } else {
+         buttonRight.style.background = 'url(./assets/images/svg/arrow-right-bold.svg)'
+      }
+   }
+}
+
+
+console.log(`Ваша оценка - 125 баллов 
 Отзыв по пунктам ТЗ:
 Выполненные пункты:
-1) Блок header 
+1) на десктоп варианте при клике на урезанную картинку слева или справа изображение меняется по принципу карусели(например если нажать правую картинку та что была в центре на уезжает налево, а та что была видна наполовину оказывается справа) 
 
-2) Секция preview 
+2) Три точки внизу отображают "номер слайда", то есть каждому слайду соответствует свой кружочек, который становится активным при нахождении соответствующего ему слайда в центре. На мобильном варианте картинка одна, но поверх нее появляются стрелочки навигации (можно сделать как карусель или же затемнять кнопку если слайдер достиг края) 
 
-3) Секция steps 
+3) Анимации плавного перемещения для слайдера 
 
-4) Секция destinations 
+4) логин попап соответствует верстке его закрытие происходит при клике вне попапа 
 
-5) Секция stories 
+5) логин попап имеет 2 инпута (логин и пароль) при нажатии на кнопку Sign In показывается браузерный алерт с введенными данными (для реализации можно использовать тег) 
 
-6) Блок footer 
-
-7) нет полосы прокрутки при ширине страницы от 1440рх до 390px 
-
-8) нет полосы прокрутки при ширине страницы от 390px до 320рх 
-
-9) при ширине страницы 390рх панель навигации скрывается, появляется бургер-иконка 
-
-10) при нажатии на бургер-иконку плавно появляется адаптивное меню 
-
-11) адаптивное меню соответствует макету 
-
-12) при нажатии на крестик адаптивное меню плавно скрывается уезжая за экран 
-
-13) ссылки в адаптивном меню работают, обеспечивая плавную прокрутку по якорям (все, кроме Account, она пока просто закрывает меню) 
-
-14) при клике по ссылке в адаптивном меню адаптивное меню плавно скрывается, также скрытие меню происходит если сделать клик вне данного окна 
+6) Нажатие на кнопку Register на Login попапе меняет разметку попапа на разметку Sign Up попапа согласно макету (То есть нажатие не закрывает модал а просто меняет его наполнение) 
 
 `)
+
+

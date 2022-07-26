@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@500&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Magra:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="./index.js" defer></script>
@@ -34,6 +34,36 @@
           <img src="./assets/images/svg/menu-icon.svg" alt="Menu button" class="menu-icon" width="35" height="32">
         </div>
         <button class="header__login-button">Login</button>
+        <div class="popup-container">
+          <form class="login-form" action="/">
+            <h3 class="login-form__header">Log in to your account</h3>
+            <button class="login-form__button button-facebook"><img class="sign-in-icon" src="./assets/images/svg/facebook-icon.svg" alt="Facebook icon" width="24" height="24">Sign in with Facebook</button>
+            <button class="login-form__button button-google"><img class="sign-in-icon" src="./assets/images/svg/google-icon.svg" alt="Facebook icon" width="24" height="24">Sign in with Google</button>
+            <div class="login-form__divider divider-text">or</div>
+            <label class="input-label" for="email">E-mail</label>
+            <input class="login-form__input" type="email" name="email" id="email">
+            <label class="input-label" for="password">Password</label>
+            <input class="login-form__input" type="password" name="password" id="password">
+            <button class="login-form__button button-sign-in"> Sign in</button>
+            <a href="#" class="login-form__link">Forgot Your Password?</a>
+            <div class="login-form__divider"></div>
+            <div class="login-form__footer">
+              Don't have an account? <a href="#" class="login-form__link popup-switch">Register</a>
+            </div>
+          </form>
+          <form class="sign-up-form hidden" action="/">
+            <h3 class="sign-up-form__header">Create account</h3>
+            <label class="input-label" for="email" >E-mail</label>
+            <input class="login-form__input" type="email" name="email" id="new-email">
+            <label class="input-label" for="password">Password</label>
+            <input class="login-form__input" type="password" name="password" id="new-password">
+            <button class="login-form__button button-sign-up"> Sign Up</button>
+            <div class="login-form__divider"></div>
+            <div class="login-form__footer">
+              Already have an account? <a href="#" class="login-form__link popup-switch">Log in</a>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </header>
@@ -75,6 +105,8 @@
     </section>
     <section class="section section-destinations" id="destinations">
       <h2 class="section-heading section-destinations__heading">POPULAR DESTINATIONS</h2>
+      <div class="slide-button button-left"></div>
+      <div class="slide-button button-right"></div>
       <div class="section-destinations__slider">
         <div class="section-destinations__figure">
           <picture>
@@ -84,7 +116,7 @@
           </picture>
           <p class="section-destinations__caption">Spain</p>
         </div>
-        <div class="section-destinations__figure">
+        <div class="section-destinations__figure current-slide">
           <picture >
             <source srcset="./assets/images/destinations-2-m.jpg" media="(max-width: 390px)">
             <source srcset="./assets/images/destinations-2.jpg" media="(min-width: 391px)">
