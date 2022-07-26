@@ -76,20 +76,76 @@ signInButton.addEventListener('click', (e) => {
 // Carousel/Slider
 
 const slider = document.querySelector('.section-destinations__slider');
-const slides = Array.from(slider.children);
+const dotNav = document.querySelector('.slider-dots');
+const dots = Array.from(dotNav.children);
+let slides = Array.from(slider.children);
+let currentSlide = slider.querySelector('.current-slide');
+let leftSlide = currentSlide.previousElementSibling;
+let rightSlide = currentSlide.nextElementSibling;
+let currentPosition = 0;
 
-const slideWidth = 800;
+const slideWidth = 860;
 
-let leftSlideButton = slides[0];
-let rightSlideButton = slides[2];
+slider.insertBefore(slides[slides.length - 1].cloneNode(true), slides[0]);
+slider.append(slides[0].cloneNode(true));
 
-leftSlideButton.addEventListener('click', e => {
-   console.log(leftSlideButton)
-   slider.style.transform = `translateX(${slideWidth}px)`;
-   leftSlideButton.nextElementSibling.classList.remove('current-slide');
-   leftSlideButton.classList.add('current-slide');
+slider.addEventListener('click', (e) => {
+   if (e.composedPath().includes(leftSlide) && leftSlide.previousElementSibling) {
+      moveSlide(slideWidth, leftSlide);
+      const currentDot = dotNav.querySelector('.slider-dots__dot-active');
+      const targetDot = currentDot.previousElementSibling;
+      updateDots(currentDot, targetDot);
+      initialiseSlides(slider);
+   } else if (e.composedPath().includes(rightSlide) && rightSlide.nextElementSibling) {
+      moveSlide(-slideWidth, rightSlide);
+      const currentDot = dotNav.querySelector('.slider-dots__dot-active');
+      const targetDot = currentDot.nextElementSibling;
+      updateDots(currentDot, targetDot);
+      initialiseSlides(slider);
+   }
 });
 
-rightSlideButton.addEventListener('click', e => {
-   slider.style.transform = `translateX(${-slideWidth}px)`;
+dotNav.addEventListener('click', e => {
+   const targetDot = e.target.closest('.slider-dots__dot');
+
+   if (!targetDot) return;
+
+   slides = Array.from(slider.children);
+   const currentDot = dotNav.querySelector('.slider-dots__dot-active');
+   const currentIndex = dots.findIndex(dot => dot === currentDot);
+   const targetIndex = dots.findIndex(dot => dot === targetDot);
+   const targetSlide = slides.slice(1, slides.length - 1)[targetIndex];
+   const amountToMove = (currentIndex - targetIndex) * slideWidth;
+   moveSlide(amountToMove, targetSlide);
+   updateDots(currentDot, targetDot);
+   initialiseSlides(slider);
 });
+
+function moveSlide(amount, targetSlide) {
+      currentPosition += amount;
+      slider.style.transform = `translateX(${currentPosition}px)`;
+      currentSlide.classList.remove('current-slide');
+      targetSlide.classList.add('current-slide');
+}
+
+function initialiseSlides(slider) {
+   slides = Array.from(slider.children);
+   currentSlide = slider.querySelector('.current-slide');
+   leftSlide = currentSlide.previousElementSibling;
+   rightSlide = currentSlide.nextElementSibling;
+
+   if (!leftSlide.previousElementSibling) {
+      leftSlide.classList.add('slide-non-active');
+   }
+
+   if (!rightSlide.nextElementSibling) {
+      rightSlide.classList.add('slide-non-active');
+   }
+
+   console.log(leftSlide, currentSlide, rightSlide);
+}
+
+function updateDots(currentDot, targetDot) {
+   currentDot.classList.remove('slider-dots__dot-active');
+   targetDot.classList.add('slider-dots__dot-active');
+}

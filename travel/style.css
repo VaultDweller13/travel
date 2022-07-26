@@ -530,7 +530,6 @@ button:focus  {
 
 .login-form {
   top: 54%;
-  /* padding: 25px 45px 23px; */
   padding: 25px 0 23px;
 
   transition: 0.5s;
@@ -971,6 +970,14 @@ button:focus  {
 
 .section-destinations__figure.current-slide {
   cursor: default;
+}
+
+.slide-non-active {
+  cursor: default;
+}
+
+.slide-non-active img {
+  opacity: 0.7;
 }
 
 .section-destinations__figure:before {
@@ -1439,7 +1446,8 @@ button:focus  {
   }
 
   .section-destinations__slider {
-    max-width: 5560px;
+    max-width: 4000px;
+    width: 100%;
     margin-bottom: 24px;
     justify-content: center;
     gap: 60px;
