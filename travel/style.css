@@ -960,7 +960,8 @@ button:focus  {
   max-width: 360px;
   margin: 0 auto 10px;
   display: flex;
-  overflow: hidden;
+  gap: 15px;
+  /* overflow: hidden; */
 
   transition: transform 1s ease-in-out;
 }
@@ -986,26 +987,14 @@ button:focus  {
   z-index: 1;
 }
 
-/* .section-destinations__figure:before { */
-  .button-left {
-  /* content: ""; */
-  /* width: 30px;
-  height: 30px;
-  position: absolute; */
-  /* top: 150px; */
+.button-left {
   left: 20px;
-  background: url(./assets/images/svg/arrow-left.svg);
+  /* background: url(./assets/images/svg/arrow-left.svg); */
 }
 
-/* .section-destinations__figure:after { */
-  .button-right {
-  /* content: ""; */
-  /* width: 30px;
-  height: 30px;
-  position: absolute; */
-  /* top: 90px; */
+.button-right {
   right: 20px;
-  background: url(./assets/images/svg/arrow-right-bold.svg);
+  /* background: url(./assets/images/svg/arrow-right-bold.svg); */
 }
 
 .section-destinations__image {
@@ -1045,7 +1034,6 @@ button:focus  {
 
 .slider-dots__dot-active {
   background-color: #f2785c;
-  order: -1;
 }
 
 .section-destinations__button {

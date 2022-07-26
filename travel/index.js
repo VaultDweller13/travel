@@ -73,107 +73,168 @@ signInButton.addEventListener('click', (e) => {
    alert(`Email: ${email}\nPassword: ${password}`);
 });
 
-// Carousel/Slider
-
-const slider = document.querySelector('.section-destinations__slider');
-const dotNav = document.querySelector('.slider-dots');
-const dots = Array.from(dotNav.children);
-let slides = Array.from(slider.children);
-let currentSlide = slider.querySelector('.current-slide');
-let leftSlide = currentSlide.previousElementSibling;
-let rightSlide = currentSlide.nextElementSibling;
-let currentPosition = 0;
-
-const slideWidth = 860;
+// Desktop
 
 const mediaQuery = window.matchMedia('(min-width: 391px)')
 
-if (mediaQuery.matches) {
-   slider.insertBefore(slides[slides.length - 1].cloneNode(true), slides[0]);
-   slider.append(slides[0].cloneNode(true));
+function handleDeviceMode(e) {
+   e.matches ? initialiseDesktopSlider() : initialiseMobileSlider();
 }
 
-slider.addEventListener('click', (e) => {
-   if (e.composedPath().includes(leftSlide) && leftSlide.previousElementSibling) {
-      moveSlide(slideWidth, leftSlide);
+mediaQuery.addEventListener('change', handleDeviceMode);
+handleDeviceMode(mediaQuery);
+
+function initialiseDesktopSlider() {
+   const slider = document.querySelector('.section-destinations__slider');
+   const dotNav = document.querySelector('.slider-dots');
+   const dots = Array.from(dotNav.children);
+   let slides = Array.from(slider.children);
+   let currentSlide = slider.querySelector('.current-slide');
+   let leftSlide = currentSlide.previousElementSibling;
+   let rightSlide = currentSlide.nextElementSibling;
+   let currentPosition = 0;
+
+   const slideWidth = 860;
+
+   slider.insertBefore(slides[slides.length - 1].cloneNode(true), slides[0]);
+   slider.append(slides[0].cloneNode(true));
+
+   slider.addEventListener('click', (e) => {
+      if (e.composedPath().includes(leftSlide) && leftSlide.previousElementSibling) {
+         moveSlide(slideWidth, leftSlide);
+         const currentDot = dotNav.querySelector('.slider-dots__dot-active');
+         const targetDot = currentDot.previousElementSibling;
+         updateDots(currentDot, targetDot);
+         updateSlides(slider);
+      } else if (e.composedPath().includes(rightSlide) && rightSlide.nextElementSibling) {
+         moveSlide(-slideWidth, rightSlide);
+         const currentDot = dotNav.querySelector('.slider-dots__dot-active');
+         const targetDot = currentDot.nextElementSibling;
+         updateDots(currentDot, targetDot);
+         updateSlides(slider);
+      }
+   });
+
+   dotNav.addEventListener('click', e => {
+      const targetDot = e.target.closest('.slider-dots__dot');
+
+      if (!targetDot) return;
+
+      slides = Array.from(slider.children);
       const currentDot = dotNav.querySelector('.slider-dots__dot-active');
-      const targetDot = currentDot.previousElementSibling;
+      const currentIndex = dots.findIndex(dot => dot === currentDot);
+      const targetIndex = dots.findIndex(dot => dot === targetDot);
+      const targetSlide = slides.slice(1, slides.length - 1)[targetIndex];
+      const amountToMove = (currentIndex - targetIndex) * slideWidth;
+      moveSlide(amountToMove, targetSlide);
       updateDots(currentDot, targetDot);
-      initialiseSlides(slider);
-   } else if (e.composedPath().includes(rightSlide) && rightSlide.nextElementSibling) {
-      moveSlide(-slideWidth, rightSlide);
-      const currentDot = dotNav.querySelector('.slider-dots__dot-active');
-      const targetDot = currentDot.nextElementSibling;
-      updateDots(currentDot, targetDot);
-      initialiseSlides(slider);
+      updateSlides(slider);
+   });
+
+   function updateSlides(slider) {
+      slides = Array.from(slider.children);
+      currentSlide = slider.querySelector('.current-slide');
+      leftSlide = currentSlide.previousElementSibling;
+      rightSlide = currentSlide.nextElementSibling;
+
+      if (!leftSlide.previousElementSibling) {
+         leftSlide.classList.add('slide-non-active');
+      }
+
+      if (!rightSlide.nextElementSibling) {
+         rightSlide.classList.add('slide-non-active');
+      }
    }
-});
 
-dotNav.addEventListener('click', e => {
-   const targetDot = e.target.closest('.slider-dots__dot');
-
-   if (!targetDot) return;
-
-   slides = Array.from(slider.children);
-   const currentDot = dotNav.querySelector('.slider-dots__dot-active');
-   const currentIndex = dots.findIndex(dot => dot === currentDot);
-   const targetIndex = dots.findIndex(dot => dot === targetDot);
-   const targetSlide = slides.slice(1, slides.length - 1)[targetIndex];
-   const amountToMove = (currentIndex - targetIndex) * slideWidth;
-   moveSlide(amountToMove, targetSlide);
-   updateDots(currentDot, targetDot);
-   initialiseSlides(slider);
-});
-
-function moveSlide(amount, targetSlide) {
+   function moveSlide(amount, targetSlide) {
       currentPosition += amount;
       slider.style.transform = `translateX(${currentPosition}px)`;
       currentSlide.classList.remove('current-slide');
       targetSlide.classList.add('current-slide');
+   }
+   
+   function updateDots(currentDot, targetDot) {
+      currentDot.classList.remove('slider-dots__dot-active');
+      targetDot.classList.add('slider-dots__dot-active');
+   }
 }
 
-function initialiseSlides(slider) {
-   slides = Array.from(slider.children);
-   currentSlide = slider.querySelector('.current-slide');
-   leftSlide = currentSlide.previousElementSibling;
-   rightSlide = currentSlide.nextElementSibling;
+// Mobile
 
-   if (!leftSlide.previousElementSibling) {
-      leftSlide.classList.add('slide-non-active');
+function initialiseMobileSlider() {
+   const slider = document.querySelector('.section-destinations__slider');
+   const slides = Array.from(slider.children);
+   const dotNav = document.querySelector('.slider-dots');
+   const dots = Array.from(dotNav.children);
+   const buttonLeft = document.querySelector('.button-left');
+   const buttonRight = document.querySelector('.button-right');
+
+   let currentSlide = document.querySelector('.current-slide');
+   setCurrentSlide(slides[0]);
+   let currentDot = dotNav.querySelector('.slider-dots__dot-active');
+   setCurrentDot(dots[0]);
+   setButtonsIcons();
+
+   let currentPosition = 0;
+   const slideWidth = 375;
+
+   buttonLeft.addEventListener('click', e => {
+      if (!currentSlide.previousElementSibling) return;
+      moveSlide(slideWidth, currentSlide.previousElementSibling);
+      setCurrentDot(currentDot.previousElementSibling);
+   });
+
+   buttonRight.addEventListener('click', e => {
+      if (!currentSlide.nextElementSibling) return;
+      moveSlide(-slideWidth, currentSlide.nextElementSibling);
+      setCurrentDot(currentDot.nextElementSibling);
+   });
+
+   dotNav.addEventListener('click', e => {
+      const targetDot = e.target.closest('.slider-dots__dot');
+
+      if (!targetDot) return;
+
+      const currentIndex = dots.findIndex(dot => dot === currentDot);
+      const targetIndex = dots.findIndex(dot => dot === targetDot);
+      const targetSlide = slides[targetIndex];
+      const amountToMove = (currentIndex - targetIndex) * slideWidth;
+      moveSlide(amountToMove, targetSlide);
+      setCurrentDot(targetDot);
+   });
+
+   function moveSlide(amount, targetSlide) {
+      currentPosition += amount;
+      slider.style.transform = `translateX(${currentPosition}px)`;
+      setCurrentSlide(targetSlide);
+      setButtonsIcons();
+   }
+   
+   function setCurrentDot(targetDot) {
+      currentDot.classList.remove('slider-dots__dot-active');
+      targetDot.classList.add('slider-dots__dot-active');
+      currentDot = dotNav.querySelector('.slider-dots__dot-active');
    }
 
-   if (!rightSlide.nextElementSibling) {
-      rightSlide.classList.add('slide-non-active');
+   function setCurrentSlide(targetSlide) {
+      currentSlide.classList.remove('current-slide');
+      targetSlide.classList.add('current-slide');
+      currentSlide = document.querySelector('.current-slide');
    }
 
-   console.log(leftSlide, currentSlide, rightSlide);
+   function setButtonsIcons() {
+      if (!currentSlide.previousElementSibling) {
+         buttonLeft.style.background = 'url(./assets/images/svg/arrow-left.svg)'
+      } else {
+         buttonLeft.style.background = 'url(./assets/images/svg/arrow-left-bold.svg)'
+      }
+
+      if (!currentSlide.nextElementSibling) {
+         buttonRight.style.background = 'url(./assets/images/svg/arrow-right.svg)'
+      } else {
+         buttonRight.style.background = 'url(./assets/images/svg/arrow-right-bold.svg)'
+      }
+   }
 }
 
-function updateDots(currentDot, targetDot) {
-   currentDot.classList.remove('slider-dots__dot-active');
-   targetDot.classList.add('slider-dots__dot-active');
-}
 
-// Carousel/Slider mobile
-
-const buttonLeft = document.querySelector('.button-left');
-const buttonRight = document.querySelector('.button-right');
-
-console.log(buttonLeft);
-buttonLeft.addEventListener('click', e => {
-   console.log('left click');
-   moveSlide(360, currentSlide.previousElementSibling);
-   const currentDot = dotNav.querySelector('.slider-dots__dot-active');
-   const targetDot = currentDot.previousElementSibling;
-   updateDots(currentDot, targetDot);
-   initialiseSlides(slider);
-});
-
-buttonRight.addEventListener('click', e => {
-   console.log('right click');
-   moveSlide(-360, currentSlide.nextElementSibling);
-   const currentDot = dotNav.querySelector('.slider-dots__dot-active');
-   const targetDot = currentDot.nextElementSibling;
-   updateDots(currentDot, targetDot);
-   initialiseSlides(slider);
-});
